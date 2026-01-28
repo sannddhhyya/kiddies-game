@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Super Sorting Safari! 🌈</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Auto-scroll zones -->
+    <div id="auto-scroll-top"></div>
+    <div id="auto-scroll-bottom"></div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-spinner"></div>
+        <div style="position: absolute; bottom: 50px; color: white; font-size: 1.5em;">
+            Loading awesome pictures... 🌈
+        </div>
+    </div>
+
+    <!-- Main Game Container -->
+    <div id="game-container" style="display: none;">
+        <!-- Decorative corners -->
+        <div class="corner tl">🦁</div>
+        <div class="corner tr">🚀</div>
+        <div class="corner bl">🌸</div>
+        <div class="corner br">🐠</div>
+        
+        <h1>🎮 SUPER SORTING SAFARI! 🌈</h1>
+        <p id="score">⭐ Score: 0 ⭐</p>
+        
+        <!-- Progress bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        
+        <!-- Topic Selection Screen -->
+        <div id="topic-selection-screen">
+            <h2>🎯 PICK YOUR ADVENTURE! 🎯</h2>
+            <div id="topic-buttons">
+                <!-- Buttons added by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Main Game Screen -->
+        <div id="main-game-screen" style="display: none;">
+            <!-- Draggable Item - BIG EMOJI ONLY IN THE BLOCK -->
+            <div id="draggable-item" class="item" draggable="true">
+                <div class="item-content">
+                    <!-- BIG EMOJI IN THE BLOCK (REPLACING THE PICTURE) -->
+                    <div id="item-emoji" class="big-emoji"></div>
+                    <span id="item-name" class="item-text"></span>
+                </div>
+            </div>
+
+            <!-- MESSAGE AREA (NOW ABOVE THE QUESTION!) -->
+            <div id="message-area" class="feedback-correct">🎉 READY TO SORT! DRAG THE ITEM TO THE RIGHT CATEGORY! 🎉</div>
+
+            <!-- QUESTION DISPLAY (BELOW THE MESSAGE) -->
+            <div id="question-display">
+                WHERE DOES THIS BELONG? 🤔
+            </div>
+
+            <!-- Drop Zones -->
+            <div id="drop-zones-container">
+                <!-- Drop zones added by JavaScript -->
+            </div>
+            
+            <!-- Buttons -->
+            <button onclick="loadNewItem()" id="next-btn">
+                <i class="fas fa-arrow-right"></i> NEXT ITEM ➡️
+            </button>
+            <button onclick="showTopicSelection()" id="change-topic-btn">
+                <i class="fas fa-sync-alt"></i> CHANGE TOPIC 🔄
+            </button>
+        </div>
+    </div>
+
+    <!-- Confetti container -->
+    <div id="confetti-container"></div>
+
+    <script src="game.js"></script>
+</body>
+</html>
