@@ -1,0 +1,589 @@
+/* === CLASSIC KID COLORS ONLY === */
+:root {
+    --red: #FF6B6B;
+    --yellow: #FFD93D;
+    --orange: #FF9C6B;
+    --green: #6BCF7F;
+    --blue: #4D96FF;
+    --pink: #FF7EB9;
+    --white: #FFFFFF;
+    --black: #333333;
+}
+
+/* === SUPER FUN ANIMATIONS === */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(8deg); }
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(600px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes ocean-wave {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+}
+
+@keyframes correct-blink {
+    0%, 100% { background-color: var(--green); }
+    50% { background-color: var(--yellow); }
+}
+
+@keyframes incorrect-shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* === BODY WITH RAINBOW BACKGROUND === */
+body {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial Rounded MT Bold', sans-serif;
+    background: linear-gradient(45deg, var(--red), var(--orange), var(--yellow), var(--green), var(--blue), var(--pink));
+    background-size: 400% 400%;
+    animation: rainbow 8s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* CHANGED FROM center TO flex-start */
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    padding: 20px;
+    overflow-y: auto; /* ADDED: Allow vertical scrolling */
+}
+
+/* === MAIN GAME BOX === */
+#game-container {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 50px;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.25),
+        0 0 0 10px var(--yellow),
+        0 0 0 15px var(--blue),
+        0 0 0 20px var(--red);
+    text-align: center;
+    width: 95%;
+    max-width: 1000px;
+    position: relative;
+    overflow: hidden;
+    border: 8px solid var(--green);
+    margin: 20px auto; /* ADDED: Margin for scrolling */
+    max-height: none; /* ADDED: Remove height restriction */
+}
+
+/* === FUN BORDER CORNERS === */
+.corner {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+}
+.corner.tl { top: 15px; left: 15px; }
+.corner.tr { top: 15px; right: 15px; }
+.corner.bl { bottom: 15px; left: 15px; }
+.corner.br { bottom: 15px; right: 15px; }
+
+/* === HEADERS THAT POP === */
+h1 {
+    color: var(--red);
+    margin-bottom: 10px;
+    font-size: 3.5em;
+    text-shadow: 
+        4px 4px 0 var(--yellow),
+        8px 8px 0 rgba(0, 0, 0, 0.1);
+    letter-spacing: 2px;
+    animation: bounce 2s infinite;
+    background: linear-gradient(to right, var(--red), var(--orange), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding: 10px;
+}
+
+h2 {
+    color: var(--blue);
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    text-shadow: 3px 3px 0 var(--yellow);
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+/* === SCORE DISPLAY === */
+#score {
+    background: linear-gradient(to right, var(--orange), var(--yellow));
+    color: var(--black);
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 60px;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 0 var(--red);
+    border: 6px solid var(--white);
+    animation: pulse 2s infinite;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+/* === TOPIC SELECTION === */
+#topic-selection-screen {
+    padding: 40px;
+    border: 8px dashed var(--blue);
+    border-radius: 40px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    position: relative;
+    overflow: hidden;
+}
+
+/* === TOPIC BUTTONS === */
+#topic-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.topic-btn {
+    background: linear-gradient(145deg, var(--blue), var(--green));
+    color: var(--white);
+    border: none;
+    padding: 25px;
+    border-radius: 25px;
+    font-size: 1.8em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 12px 0 var(--red);
+    min-width: 220px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.topic-btn:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 0 var(--red);
+}
+
+.topic-btn:active {
+    transform: translateY(5px);
+    box-shadow: 0 5px 0 var(--red);
+}
+
+.topic-btn .emoji {
+    font-size: 2.5em;
+    animation: float 3s infinite;
+}
+
+/* === DRAGGABLE ITEM === */
+#draggable-item {
+    cursor: grab;
+    padding: 30px;
+    margin: 40px auto;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(145deg, var(--yellow), var(--orange));
+    color: var(--black);
+    border-radius: 35px;
+    box-shadow: 
+        0 20px 0 var(--red),
+        0 25px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: float 4s infinite ease-in-out;
+    transition: transform 0.2s;
+    border: 10px solid var(--white);
+    touch-action: none; /* ADDED: Better touch control */
+}
+
+#draggable-item.dragging {
+    cursor: grabbing;
+    transform: rotate(10deg) scale(1.1);
+    animation: none;
+    box-shadow: 
+        0 10px 0 var(--red),
+        0 15px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1000; /* ADDED: Make sure it's on top */
+}
+
+#draggable-item::before {
+    content: "👇 DRAG ME! 👇";
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--pink);
+    color: var(--white);
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1.2em;
+    white-space: nowrap;
+    animation: bounce 1s infinite;
+    border: 5px solid var(--white);
+}
+
+/* BIG EMOJI IN THE BLOCK (REPLACING THE PICTURE) */
+#draggable-item .item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.big-emoji {
+    font-size: 6em;
+    margin-bottom: 20px;
+    animation: float 3s infinite;
+    display: block;
+    text-align: center;
+    line-height: 1;
+}
+
+.item-text {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: var(--black);
+    background: var(--white);
+    padding: 12px 25px;
+    border-radius: 60px;
+    box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
+    border: 5px solid var(--green);
+    margin-top: 10px;
+}
+
+/* === MESSAGE AREA - NOW ABOVE THE QUESTION === */
+#message-area {
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 25px;
+    font-size: 2em;
+    font-weight: bold;
+    min-height: 40px;
+    width: 90%;
+    transition: all 0.5s;
+    box-shadow: 0 10px 0 rgba(0, 0, 0, 0.15);
+    border: 8px solid var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.feedback-correct {
+    background: linear-gradient(135deg, var(--green), var(--blue));
+    color: var(--white);
+}
+
+.feedback-incorrect {
+    background: linear-gradient(135deg, var(--red), var(--pink));
+    color: var(--white);
+    animation: incorrect-shake 0.5s;
+}
+
+/* === QUESTION DISPLAY (BELOW MESSAGE) === */
+#question-display {
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 30px;
+    font-size: 2.2em;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--pink), var(--blue));
+    color: var(--white);
+    box-shadow: 0 10px 0 var(--orange);
+    border: 8px solid var(--white);
+    min-height: 40px;
+    width: 90%;
+    animation: ocean-wave 2s infinite;
+}
+
+/* === DROP ZONES === */
+#drop-zones-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.drop-zone {
+    flex: 1;
+    min-width: 240px;
+    padding: 30px;
+    border-radius: 30px;
+    min-height: 200px;
+    background: linear-gradient(145deg, var(--green), var(--blue));
+    box-shadow: 
+        0 15px 0 var(--orange),
+        inset 0 0 25px rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    border: 8px solid var(--white);
+    position: relative;
+}
+
+.drop-zone.drag-over {
+    transform: translateY(-15px) scale(1.08);
+    background: linear-gradient(145deg, var(--yellow), var(--orange));
+    box-shadow: 
+        0 20px 0 var(--red),
+        inset 0 0 40px rgba(255, 255, 255, 0.8);
+    animation: wiggle 0.6s infinite;
+}
+
+.drop-zone h2 {
+    color: var(--white);
+    margin-top: 0;
+    font-size: 2em;
+    text-shadow: 2px 2px 0 var(--black);
+    margin-bottom: 20px;
+}
+
+.drop-indicator {
+    color: var(--white);
+    font-style: italic;
+    margin-top: 15px;
+    font-size: 1.4em;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 30px;
+    opacity: 0.9;
+}
+
+.drop-zone.drag-over .drop-indicator {
+    opacity: 1;
+    animation: bounce 0.8s infinite;
+}
+
+/* Dropped emojis styling */
+.dropped-emojis {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+    min-height: 40px;
+    font-size: 1.8em;
+}
+
+.dropped-emojis div {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.dropped-emojis div:hover {
+    transform: scale(1.3);
+}
+
+/* === AUTO-SCROLL ZONES === */
+#auto-scroll-top, #auto-scroll-bottom {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 999;
+    pointer-events: none;
+}
+
+#auto-scroll-top {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(255, 107, 107, 0.3), transparent);
+}
+
+#auto-scroll-bottom {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(255, 107, 107, 0.3), transparent);
+}
+
+/* === BUTTONS === */
+button {
+    background: linear-gradient(145deg, var(--red), var(--pink));
+    color: var(--white);
+    border: none;
+    padding: 20px 40px;
+    border-radius: 60px;
+    font-size: 1.6em;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px;
+    transition: all 0.3s;
+    box-shadow: 
+        0 12px 0 var(--blue),
+        0 20px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    min-width: 220px;
+    border: 6px solid var(--white);
+}
+
+button:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 
+        0 18px 0 var(--blue),
+        0 25px 30px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(5px);
+    box-shadow: 
+        0 5px 0 var(--blue),
+        0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+button i {
+    margin-right: 10px;
+}
+
+#change-topic-btn {
+    background: linear-gradient(145deg, var(--blue), var(--green));
+}
+
+/* === PROGRESS BAR === */
+.progress-container {
+    width: 90%;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    margin: 30px auto;
+    overflow: hidden;
+    border: 6px solid var(--white);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--red), var(--orange), var(--yellow), var(--green), var(--blue));
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 50px;
+}
+
+/* === CONFETTI === */
+.confetti {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    top: -20px;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 0;
+    font-size: 20px;
+}
+
+/* === LOADING SCREEN === */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--red), var(--orange), var(--yellow), var(--green), var(--blue), var(--pink));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: correct-blink 1s infinite;
+}
+
+.loading-spinner {
+    width: 100px;
+    height: 100px;
+    border: 10px solid var(--white);
+    border-top: 10px solid var(--blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    #game-container {
+        padding: 25px;
+        border-radius: 40px;
+    }
+    
+    h1 {
+        font-size: 2.5em;
+    }
+    
+    .topic-btn, .drop-zone {
+        min-width: 100%;
+    }
+    
+    #drop-zones-container {
+        flex-direction: column;
+    }
+    
+    #topic-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #draggable-item {
+        width: 200px;
+        height: 200px;
+    }
+    
+    #question-display {
+        font-size: 1.8em;
+        padding: 20px;
+    }
+    
+    #message-area {
+        font-size: 1.6em;
+        padding: 20px;
+    }
+    
+    .big-emoji {
+        font-size: 4.5em;
+    }
+    
+    .item-text {
+        font-size: 1.8em;
+    }
+    
+    #auto-scroll-top, #auto-scroll-bottom {
+        height: 60px;
+    }
+}
